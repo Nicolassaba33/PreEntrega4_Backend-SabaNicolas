@@ -3,7 +3,7 @@ const fs = require("fs").promises;
 const { v4: uuidv4 } = require("uuid");
 const ProductManager = require("./ProductManager");
 const app = express();
-const port = 8080;
+const PORT = 8080;
 
 const productManager = new ProductManager("./products.json");
 let carts = [];
@@ -74,8 +74,8 @@ app.post("/api/carts/:cid/product/:pid", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Servidor Express iniciado en http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Servidor Express iniciado en http://localhost:${PORT}`);
 });
 productsRouter.get("/", async (req, res) => {
   try {
@@ -197,6 +197,6 @@ cartsRouter.post("/", (req, res) => {
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 
-app.listen(port, () => {
-  console.log(`Servidor Express iniciado en http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Servidor Express iniciado en http://localhost:${PORT}`);
 });
